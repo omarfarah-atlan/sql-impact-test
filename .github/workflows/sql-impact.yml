@@ -12,9 +12,11 @@ permissions:
 
 jobs:
   sql-impact-analysis:
+    name: Atlan SQL Impact Analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Analyze SQL Impact
         uses: omarfarah-atlan/sql-action@v1
         with:
