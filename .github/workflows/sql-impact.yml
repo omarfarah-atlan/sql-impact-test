@@ -1,0 +1,26 @@
+name: SQL Impact Analysis
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '**/*.sql'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  sql-impact-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Analyze SQL Impact
+        uses: omarfarah-atlan/sql-action@v1
+        with:
+          atlan-base-url: ${{ secrets.ATLAN_BASE_URL }}
+          atlan-api-key: ${{ secrets.ATLAN_API_KEY }}
+          connection-qualified-name: ${{ vars.ATLAN_CONNECTION_QN }}
+          sql-glob: '**/*.sql'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
