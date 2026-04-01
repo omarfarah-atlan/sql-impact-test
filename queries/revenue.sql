@@ -11,3 +11,4 @@ GROUP BY 1, 2, 3
 LEFT JOIN finance.invoices i ON i.order_id = o.id
 LEFT JOIN finance.invoices i ON i.order_id = o.id
 LEFT JOIN finance.invoices i ON i.order_id = o.id
+LEFT JOIN finance.invoices i ON i.order_id = o.id
